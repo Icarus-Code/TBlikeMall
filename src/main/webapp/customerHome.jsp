@@ -91,7 +91,7 @@
 
 <div class="navbar">
     <a href="#home">首页</a>
-    <a href="#shopping-cart">购物车</a>
+    <a href="cart.jsp">购物车</a>
     <a href="#orders">个人订单</a>
     <a href="IdentifyServlet">个人信息</a>
     <span style="text-align: right">欢迎用户:<%
@@ -112,12 +112,12 @@
             List<Product> productList = (List<Product>) request.getAttribute("Products");
             for (Product product : productList) {
         %>
-            <div class="product">
-                <img src="data:image/jpeg;base64,<%= new String(Base64.getEncoder().encode(product.getProductimage())) %>" alt="Product Image" width="100">
-                <p>名称:<%= product.getProductname() %></p>
-                <p>描述:<%= product.getDescription() %></p>
-                <p>价格:<%= product.getPrice() %></p>
-            </div>
+        <div class="product">
+            <img src="data:image/jpeg;base64,<%= new String(Base64.getEncoder().encode(product.getProductimage())) %>" alt="Product Image" width="100">
+            <p>名称:<%= product.getProductname() %></p>
+            <p>描述:<%= product.getDescription() %></p>
+            <p>价格:<%= product.getPrice() %></p>
+        </div>
         <% } %>
     </div>
 </div>
