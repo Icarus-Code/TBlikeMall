@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>操作成功！</title>
+    <title>账号操作成功！</title>
 </head>
 <body>
-    <h2>操作成功</h2>
+    <h2>账号操作成功</h2>
     <hr>
     <p>即将返回首页，请重新登录</p>
     <a href="logout.jsp"><button>确定</button></a>

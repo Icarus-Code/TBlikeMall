@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartDao {
-    public List<Cart> findAll(){
+    public List<Cart> findAll(int userid){
         List<Cart> carts = new ArrayList<>();
-        String sql = "select * from cart";
+        String sql = "select * from cart where userid = ?";
         Util util = new Util();
-        List<Object[]> objs = util.queryList(sql,null,4);
+        List params = new ArrayList();
+        params.add(userid);
+        List<Object[]> objs = util.queryList(sql,params,4);
         for(Object[] obj : objs){
             Cart cart = new Cart();
             cart.setCartid(Integer.parseInt(obj[0].toString()));

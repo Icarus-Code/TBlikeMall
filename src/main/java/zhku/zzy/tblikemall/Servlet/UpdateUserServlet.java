@@ -44,7 +44,7 @@ public class UpdateUserServlet extends HttpServlet {
             else{
                 userService.userUpdate(username,password,userService.findByName(request.getSession().getAttribute("username").toString()).getUserid());
                 try {
-                    response.sendRedirect("Success.jsp");
+                    response.sendRedirect("accountOperateSuccess.jsp");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

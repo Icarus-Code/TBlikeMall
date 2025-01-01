@@ -102,7 +102,7 @@
 
 <div class="navbar">
     <a href="ShowProductsServlet">首页</a>
-    <a href="cart.jsp">购物车</a>
+    <a href="ShowCartServlet">购物车</a>
     <a href="#orders">个人订单</a>
     <a href="IdentifyServlet">个人信息</a>
     <span style="text-align: right">欢迎用户:<%

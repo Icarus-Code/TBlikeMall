@@ -44,8 +44,15 @@
         </select>
     </div>
 
-    <button onclick="addToCart()">加入购物车</button>
-    <button onclick="buyNow()">立即购买</button>
+    <button onclick="redirectTo('AddCartServlet', '<%= product.getProductid() %>')">加入购物车</button>
+    <button onclick="redirectTo('BuyNowServlet', '<%= product.getProductid() %>')">立即购买</button>
+    <script>
+        function redirectTo(servletName, productId) {
+            var quantity = document.getElementById('quantity').value;
+            window.location.href = servletName + '?productid=' + productId + '&quantity=' + quantity;
+        }
+    </script>
+
 </div>
 </body>
 </html>

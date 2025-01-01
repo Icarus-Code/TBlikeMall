@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
                 user.setRole(role);
                 userService.userAdd(user);
                 try {
-                    response.sendRedirect("Success.jsp");
+                    response.sendRedirect("accountOperateSuccess.jsp");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
