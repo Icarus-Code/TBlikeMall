@@ -36,6 +36,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version> <!-- 请使用最新的版本号 -->
+        </dependency>
+
     </dependencies>
 
     <build>
