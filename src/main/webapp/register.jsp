@@ -1,10 +1,14 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="zh-CN">
+<%--
+  Created by IntelliJ IDEA.
+  User: YiJun
+  Date: 2025/1/2
+  Time: 上午12:07
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录页面</title>
+    <title>注册页面</title>
     <style>
         body {
             display: flex;
@@ -15,14 +19,14 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
-        .login-container {
+        .register-container {
             background-color: white;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px; /* 增加窗口宽度 */
         }
-        .login-container h2 {
+        .register-container h2 {
             text-align: center;
         }
         .form-group {
@@ -78,9 +82,9 @@
     </style>
 </head>
 <body>
-<div class="login-container">
-    <h2>登录账号</h2>
-    <form action="LoginServlet" method="post">
+<div class="register-container">
+    <h2>注册账号</h2>
+    <form action="RegisterServlet" method="post">
         <div class="form-group">
             <label for="username">用户名:</label>
             <input type="text" id="username" name="username" required>
@@ -92,21 +96,19 @@
         <div class="form-group">
             <label for="role">身份:</label>
             <select id="role" name="role">
-                <option value="admin">管理员</option>
+                <!-- <option value="admin">管理员</option> -->
                 <option value="shopkeeper">店家</option>
                 <option value="customer">顾客</option>
             </select>
         </div>
         <div class="form-actions">
-            <input type="submit" value="登录">
+            <input type="submit" value="注册">
             <input type="reset" value="重置">
         </div>
     </form>
     <div class="register-link">
-        <a href="register.jsp">还没有账号？去注册</a>
+        <a href="login.jsp">已有账号？去登录</a>
     </div>
 </div>
 </body>
 </html>
-
-

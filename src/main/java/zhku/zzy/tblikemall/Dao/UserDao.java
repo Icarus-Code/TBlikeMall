@@ -7,17 +7,16 @@ import java.util.*;
 
 public class UserDao {
     public boolean isValid(String username, String password) {
-        String sql = "select * from users where name=? and password=?";
+        String sql = "SELECT * FROM users WHERE username=? AND password=?";
         Util util = new Util();
-        List params = new ArrayList();
+        List<Object> params = new ArrayList<>();
         params.add(username);
         params.add(password);
-        Object[] obj = util.query(sql,params,4);
-        if(obj == null){
-            return false;
-        }
-        return true;
+        Object[] obj = util.query(sql, params, 4);
+        return obj != null;
     }
+
+
 
     public List<User> findAll(){
         List<User> users = new ArrayList<>();
@@ -35,19 +34,23 @@ public class UserDao {
         return users;
     }
 
-    public User findByName(String name){
-        String sql = "select * from users where name=?";
+    public User findByName(String name) {
+        String sql = "SELECT * FROM users WHERE username=?";
         Util util = new Util();
-        List params = new ArrayList();
+        List<Object> params = new ArrayList<>();
         params.add(name);
+        Object[] obj = util.query(sql, params, 4);
+        if (obj == null) {
+            return null; // 或者抛出一个异常，取决于业务需求
+        }
         User user = new User();
-        Object[] obj = util.query(sql,params,4);
         user.setUserid(Integer.parseInt(obj[0].toString()));
         user.setUsername(obj[1].toString());
         user.setPassword(obj[2].toString());
         user.setRole(obj[3].toString());
         return user;
     }
+
 
     public int userAdd(User user){
         String sql = "insert into users(name,password,age) values(?,?,?)";

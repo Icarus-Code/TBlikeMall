@@ -33,12 +33,13 @@
         }
         .search-box {
             padding: 20px;
+            display: flex;
+            align-items: center;
         }
         .search-box input[type="text"] {
-            width: 100%;
+            flex: 1;
             padding: 10px;
-            margin: 10px 0;
-            display: inline-block;
+            margin-right: 10px;
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
@@ -46,10 +47,8 @@
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
-            margin: 8px 0;
             border: none;
             cursor: pointer;
-            width: 100%;
         }
         .search-box button:hover {
             opacity: 0.8;
