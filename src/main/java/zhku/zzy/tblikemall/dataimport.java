@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 
 public class dataimport {
     public static void main(String[] args) {
-        String sql = "UPDATE products SET productimage = ? WHERE productid = 1";
+        String sql = "UPDATE users SET userimage = ? WHERE userid = 3";
         String imagePath = "E:/桌面/hutao.jpg";
         FileInputStream fis = null;
         byte[] imageData = null;

@@ -37,21 +37,25 @@ public class UserDao {
     }
 
     public User findByName(String name){
-        String sql = "select * from users where name=?";
+        String sql = "select * from users where username=?";
         Util util = new Util();
         List params = new ArrayList();
         params.add(name);
         User user = new User();
-        Object[] obj = util.query(sql,params,4);
-        user.setUserid(Integer.parseInt(obj[0].toString()));
-        user.setUsername(obj[1].toString());
-        user.setPassword(obj[2].toString());
-        user.setRole(obj[3].toString());
-        return user;
+        Object[] obj = util.query(sql,params,5);
+        if(obj != null){
+            user.setUserid(Integer.parseInt(obj[0].toString()));
+            user.setUsername(obj[1].toString());
+            user.setPassword(obj[2].toString());
+            user.setRole(obj[3].toString());
+            user.setUserimage((byte[])obj[4]);
+            return user;
+        }
+        return null;
     }
 
     public int userAdd(User user){
-        String sql = "insert into users(name,password,age) values(?,?,?)";
+        String sql = "insert into users(username,password,role) values(?,?,?)";
         List params = new ArrayList();
         params.add(user.getUsername());
         params.add(user.getPassword());
@@ -60,12 +64,11 @@ public class UserDao {
         return util.executeUpdate(sql,params);
     }
 
-    public int userUpdate(String name,String password,String role,int id){
-        String sql = "update users set name=?,password=?,age=? where userid=?";
+    public int userUpdate(String name,String password,int id){
+        String sql = "update users set username=?,password=? where userid=?";
         List params = new ArrayList();
         params.add(name);
         params.add(password);
-        params.add(role);
         params.add(id);
         Util util = new Util();
         return util.executeUpdate(sql,params);

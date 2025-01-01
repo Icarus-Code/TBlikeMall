@@ -27,8 +27,8 @@ public class UserService {
         return userDao.findByName(name);
     }
 
-    public int userUpdate(String name,String password,String role,int id){
-        return userDao.userUpdate(name,password,role,id);
+    public int userUpdate(String name,String password,int id){
+        return userDao.userUpdate(name,password,id);
     }
 
     public int userDelete(String name){

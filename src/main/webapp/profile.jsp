@@ -1,4 +1,5 @@
 <%@ page import="zhku.zzy.tblikemall.Entity.User" %>
+<%@ page import="java.util.Base64" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,8 +19,8 @@
     <%
         User user = (User)request.getAttribute("user");
     %>
-    <img src="data:image/jpeg;base64,<%= session.getAttribute("userAvatar") %>" alt="用户头像" class="avatar">
-    <h2><%= session.getAttribute("username") %></h2>
+    <img src="data:image/jpeg;base64,<%= new String(Base64.getEncoder().encode(user.getUserimage())) %>" alt="User Image" width="100" class="avatar">
+    <h2><%= user.getUsername() %></h2>
     <div class="options">
         <a href="editProfile.jsp">修改个人信息</a>
         <a href="logout.jsp">退出登录</a>

@@ -109,6 +109,11 @@
     <div class="register-link">
         <a href="login.jsp">已有账号？去登录</a>
     </div>
+    <%
+        if (request.getAttribute("errorMessage") != null) {
+            out.println("<p style='color:red;'>" + request.getAttribute("errorMessage") + "</p>");
+        }
+    %>
 </div>
 </body>
 </html>
