@@ -37,7 +37,7 @@ public class UserDao {
     }
 
     public User findByName(String name){
-        String sql = "select * from users where name=?";
+        String sql = "select * from users where username=?";
         Util util = new Util();
         List params = new ArrayList();
         params.add(name);

@@ -21,16 +21,30 @@
         th {
             background-color: #f2f2f2;
         }
+        .action-buttons a {
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+        .edit-button {
+            background-color: #4CAF50; /* Green */
+        }
+        .delete-button {
+            background-color: #f44336; /* Red */
+        }
     </style>
 </head>
 <body>
-<h1>List of All Users</h1>
+<h1>用户管理</h1>
 <table>
     <tr>
         <th>User ID</th>
         <th>Username</th>
         <th>Password</th>
         <th>Role</th>
+        <th>Actions</th>
     </tr>
     <%
         UserService userService = new UserService();
@@ -42,8 +56,14 @@
         <td><%= user.getUsername() %></td>
         <td><%= user.getPassword() %></td>
         <td><%= user.getRole() %></td>
+        <td class="action-buttons">
+            <a href="editUser.jsp?userId=<%= user.getUserid() %>" class="edit-button">Edit</a> |
+            <a href="deleteUser.jsp?userId=<%= user.getUserid() %>" class="delete-button">Delete</a>
+        </td>
     </tr>
     <% } %>
 </table>
+<br/>
+<a href="addUser.jsp" class="edit-button">Add New User</a>
 </body>
 </html>
