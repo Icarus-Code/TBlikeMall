@@ -11,6 +11,14 @@ public class Product {
     private int shopid;
     private byte[] productimage;
 
+    public byte[] getProductimage() {
+        return productimage;
+    }
+
+    public void setProductimage(byte[] productimage) {
+        this.productimage = productimage;
+    }
+
     public int getProductid() {
         return productid;
     }

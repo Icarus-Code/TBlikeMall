@@ -1,3 +1,6 @@
+<%@ page import="zhku.zzy.tblikemall.Entity.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Base64" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +63,10 @@
             padding: 0 20px;
         }
         .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             border: 1px solid #ddd;
             width: calc(25% - 40px);
             margin: 20px;
@@ -87,7 +94,11 @@
     <a href="#home">首页</a>
     <a href="#shopping-cart">购物车</a>
     <a href="#orders">个人订单</a>
-    <a href="#profile">个人信息</a>
+    <a href="IdentifyServlet">个人信息</a>
+    <span style="text-align: right">欢迎用户:<%
+        if(session.getAttribute("username") == null)out.print("游客");
+        else out.print(session.getAttribute("username"));
+    %></span>
 </div>
 
 <div class="content">
@@ -98,14 +109,17 @@
         </form>
     </div>
     <div class="products">
-        <!-- 商品展示 -->
-        <%-- 这里可以动态生成商品列表 --%>
-        <div class="product">
-            <h3>商品名称</h3>
-            <p>商品描述...</p>
-            <p>价格: $99.99</p>
-        </div>
-        <!-- 重复上面的 .product 来展示更多商品 -->
+        <%
+            List<Product> productList = (List<Product>) request.getAttribute("Products");
+            for (Product product : productList) {
+        %>
+            <div class="product">
+                <img src="data:image/jpeg;base64,<%= new String(Base64.getEncoder().encode(product.getProductimage())) %>" alt="Product Image" width="100">
+                <p>名称:<%= product.getProductname() %></p>
+                <p>描述:<%= product.getDescription() %></p>
+                <p>价格:<%= product.getPrice() %></p>
+            </div>
+        <% } %>
     </div>
 </div>
 

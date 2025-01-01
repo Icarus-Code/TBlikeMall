@@ -7,6 +7,14 @@ public class User {
     private String role;
     private byte[] userimage;
 
+    public byte[] getUserimage() {
+        return userimage;
+    }
+
+    public void setUserimage(byte[] userimage) {
+        this.userimage = userimage;
+    }
+
     public int getUserid() {
         return userid;
     }

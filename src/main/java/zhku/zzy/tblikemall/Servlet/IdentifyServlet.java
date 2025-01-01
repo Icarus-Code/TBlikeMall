@@ -10,9 +10,16 @@ import java.io.IOException;
 @WebServlet("/IdentifyServlet")
 public class IdentifyServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response){
-        if(request.getSession().getAttribute("identity") == null){
+        if(request.getSession().getAttribute("username") == null || request.getSession().getAttribute("username").equals("")){
             try {
                 response.sendRedirect("login.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            try {
+                response.sendRedirect("ProfileServlet");
             } catch (IOException e) {
                 e.printStackTrace();
             }

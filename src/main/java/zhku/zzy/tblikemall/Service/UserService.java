@@ -11,8 +11,8 @@ public class UserService {
         userDao = new UserDao();
     }
 
-    public Boolean isValid(String username, String password) {
-        return userDao.isValid(username, password);
+    public Boolean isValid(String username, String password, String role) {
+        return userDao.isValid(username, password, role);
     }
 
     public List<User> findAll(){

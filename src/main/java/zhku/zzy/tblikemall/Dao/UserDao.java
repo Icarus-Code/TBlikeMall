@@ -6,12 +6,13 @@ import zhku.zzy.tblikemall.Entity.User;
 import java.util.*;
 
 public class UserDao {
-    public boolean isValid(String username, String password) {
-        String sql = "select * from users where name=? and password=?";
+    public boolean isValid(String username, String password, String role) {
+        String sql = "select * from users where username=? and password=? and role=?";
         Util util = new Util();
         List params = new ArrayList();
         params.add(username);
         params.add(password);
+        params.add(role);
         Object[] obj = util.query(sql,params,4);
         if(obj == null){
             return false;

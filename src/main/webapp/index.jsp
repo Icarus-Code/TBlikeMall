@@ -5,6 +5,6 @@
     <title>未定义</title>
 </head>
 <body>
-    <jsp:forward page="customerHome.jsp"></jsp:forward>
+    <jsp:forward page="ShowProductsServlet"></jsp:forward>
 </body>
 </html>
