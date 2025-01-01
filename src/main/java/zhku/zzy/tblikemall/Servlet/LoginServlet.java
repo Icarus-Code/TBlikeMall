@@ -45,8 +45,9 @@ public class LoginServlet extends HttpServlet {
                 try {
                     if (userService.isValid(username, password, role)) {
                         User user = userService.findByName(username);
-                        request.getSession().setAttribute("identity", user); // Store user identity in session
-                        handleRedirect(request, response, user); // Handle redirection based on user role
+                        request.getSession().setAttribute("username", user.getUsername());
+                        request.getSession().setAttribute("role", user.getRole());
+                        handleRedirect(request, response, user.getRole()); // Handle redirection based on user role
                     } else {
                         errorMessage = "用户名或密码错误";
                         request.setAttribute("errorMessage", errorMessage);
@@ -65,36 +66,17 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        doPost(request, response);
+        this.doPost(request, response);
     }
 
-    private void handleRedirect(HttpServletRequest request, HttpServletResponse response, User user) {
-        if (user == null) {
-            try {
-                response.sendRedirect("login.jsp"); // Redirect to login if user is null
-            } catch (IOException e) {
-                logger.error("Error redirecting to login page", e);
-            }
-            return;
-        }
-
-        String role = user.getRole();
-        if (role == null || role.isEmpty()) {
-            try {
-                response.sendRedirect("login.jsp"); // Redirect to login if role is unknown or empty
-            } catch (IOException e) {
-                logger.error("Error redirecting to login page", e);
-            }
-            return;
-        }
-
+    private void handleRedirect(HttpServletRequest request, HttpServletResponse response, String role) {
         try {
             switch (role) {
                 case "admin":
                     response.sendRedirect("ListAll.jsp");
                     break;
                 case "customer":
-                    response.sendRedirect("customerHome.jsp");
+                    response.sendRedirect("ShowProductsServlet");
                     break;
                 case "shopkeeper":
                     response.sendRedirect("shopHome.jsp");

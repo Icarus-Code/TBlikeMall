@@ -1,4 +1,5 @@
-<%--
+<%@ page import="zhku.zzy.tblikemall.Entity.Product" %>
+<%@ page import="java.util.Base64" %><%--
   Created by IntelliJ IDEA.
   User: Spreps
   Date: 2025/1/2
@@ -21,13 +22,15 @@
 <body>
 <div class="product-detail">
     <%
-
+        Product product = (Product)request.getAttribute("product");
+        String shopname = request.getAttribute("shopname").toString();
     %>
-    <img src="data:image/jpeg;base64,<%= product.getImageBase64() %>" alt="商品图片" class="product-image">
-    <h2><%= product.getName() %></h2>
+    <%if(product.getProductimage() != null){%><img src="data:image/jpeg;base64,<%= new String(Base64.getEncoder().encode(product.getProductimage())) %>" alt="User Image" width="100" class="avatar"><%}%>
+
+    <h2><%= product.getProductname() %></h2>
     <p>描述: <%= product.getDescription() %></p>
     <p>价格: ¥<%= product.getPrice() %></p>
-    <p>店铺: <%= product.getStoreName() %></p>
+    <p>店铺: <%= shopname %></p>
     <p>库存: <%= product.getStock() %></p>
 
     <div class="quantity-selector">

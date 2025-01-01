@@ -101,7 +101,6 @@
             <input type="reset" value="重置">
         </div>
     </form>
-    <a href="register.jsp"><button>注册</button></a>
     <%
         if (request.getAttribute("errorMessage") != null) {
             out.println("<p class='error-message'>" + request.getAttribute("errorMessage") + "</p>");

@@ -85,12 +85,23 @@
                 width: calc(100% - 40px);
             }
         }
+
+        .button-style {
+            background-color: #4CAF50; /* 按钮背景色 */
+            color: white; /* 文字颜色 */
+            padding: 10px 20px; /* 内边距 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none; /* 去除下划线 */
+            display: inline-block; /* 使链接表现得像块级元素 */
+            border: none; /* 去除边框 */
+            cursor: pointer; /* 鼠标悬停时显示手型 */
+        }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <a href="#home">首页</a>
+    <a href="ShowProductsServlet">首页</a>
     <a href="cart.jsp">购物车</a>
     <a href="#orders">个人订单</a>
     <a href="IdentifyServlet">个人信息</a>
@@ -117,6 +128,7 @@
             <p>名称:<%= product.getProductname() %></p>
             <p>描述:<%= product.getDescription() %></p>
             <p>价格:<%= product.getPrice() %></p>
+            <a href="ShowAproductServlet?productid=<%= product.getProductid()%>" class="button-style">查看</a>
         </div>
         <% } %>
     </div>
