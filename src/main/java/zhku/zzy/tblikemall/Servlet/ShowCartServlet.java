@@ -18,6 +18,14 @@ import java.util.List;
 @WebServlet("/ShowCartServlet")
 public class ShowCartServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response){
+        if(request.getSession().getAttribute("username") == null){
+            try {
+                response.sendRedirect("login.jsp");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         String username = request.getSession().getAttribute("username").toString();
         UserService userService = new UserService();
         int userid = userService.findByName(username).getUserid();
@@ -31,8 +39,6 @@ public class ShowCartServlet extends HttpServlet {
         }
         request.setAttribute("carts", carts);
         request.setAttribute("products", products);
-        System.out.println("Carts size: " + carts.size());
-        System.out.println("Products size: " + products.size());
 
         try {
             request.getRequestDispatcher("showCart.jsp").forward(request,response);

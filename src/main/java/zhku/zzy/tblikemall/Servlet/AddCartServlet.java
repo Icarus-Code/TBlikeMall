@@ -13,6 +13,14 @@ import java.io.IOException;
 @WebServlet("/AddCartServlet")
 public class AddCartServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response){
+        if(request.getSession().getAttribute("username") == null){
+            try {
+                response.sendRedirect("login.jsp");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         int productid = Integer.parseInt(request.getParameter("productid"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         UserService userService = new UserService();

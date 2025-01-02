@@ -17,7 +17,7 @@
 </head>
 <body>
 <h2>我的购物车</h2>
-<form action="PurchaseServlet" method="post">
+<form action="OrderCreateServlet" method="post">
     <table border="1">
         <tr>
             <th>选择</th>
@@ -35,7 +35,7 @@
                     Cart cart = carts.get(i);
                     Product product = products.get(i); %>
         <tr>
-            <td><input type="checkbox" name="selectedItems" value="<%= cart.getCartid() %>"></td>
+            <td><input type="checkbox" name="cartids" value="<%= cart.getCartid() %>"></td>
             <td><img src="data:image/jpeg;base64,<%= new String(Base64.getEncoder().encode(product.getProductimage())) %>" alt="Product Image" width="50px"></td>
             <td><%= product.getProductname() %></td>
             <td><%= product.getPrice() %></td>

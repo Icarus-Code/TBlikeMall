@@ -43,4 +43,18 @@ public class CartDao {
         Util util = new Util();
         return util.executeUpdate(sql,params);
     }
+
+    public Cart findListByCartId(int cartid){
+        String sql = "select * from cart where cartid = ?";
+        Util util = new Util();
+        List params = new ArrayList();
+        params.add(cartid);
+        Object[] obj = util.query(sql,params,4);
+        Cart cart = new Cart();
+        cart.setCartid(Integer.parseInt(obj[0].toString()));
+        cart.setUserid(Integer.parseInt(obj[1].toString()));
+        cart.setProductid(Integer.parseInt(obj[2].toString()));
+        cart.setQuantity(Integer.parseInt(obj[3].toString()));
+        return cart;
+    }
 }

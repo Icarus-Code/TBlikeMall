@@ -15,4 +15,12 @@ public class CartService {
     public List<Cart> findAll(int userid){
         return cartDao.findAll(userid);
     }
+
+    public Cart findListByCartId(int cartid){
+        return cartDao.findListByCartId(cartid);
+    }
+
+    public int cartDelete(int cartid){
+        return cartDao.cartDelete(cartid);
+    }
 }

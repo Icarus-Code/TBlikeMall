@@ -45,7 +45,7 @@
     </div>
 
     <button onclick="redirectTo('AddCartServlet', '<%= product.getProductid() %>')">加入购物车</button>
-    <button onclick="redirectTo('BuyNowServlet', '<%= product.getProductid() %>')">立即购买</button>
+    <button onclick="redirectTo('OrderCreateServlet', '<%= product.getProductid() %>')">立即购买</button>
     <script>
         function redirectTo(servletName, productId) {
             var quantity = document.getElementById('quantity').value;
