@@ -18,6 +18,13 @@
         <input type="text" id="username" name="username"><br><br>
         <label for="password">密码:</label>
         <input type="password" id="password" name="password"><br><br>
+        <%
+            if(request.getParameter("selectedname") != null){
+        %>
+                <input type="hidden" name="selectedname" value="<%= request.getParameter("selectedname") %>">
+        <%}else{%>
+                <input type="hidden" name="selectedname" value="<%= session.getAttribute("username") %>">
+        <%}%>
         <input type="submit" value="修改">
         <input type="reset" value="重置">
     </form>

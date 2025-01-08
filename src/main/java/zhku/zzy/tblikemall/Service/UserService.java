@@ -19,8 +19,8 @@ public class UserService {
         return userDao.findAll();
     }
 
-    public int userAdd(User user) {
-        return userDao.userAdd(user);
+    public void userAdd(User user) {
+        userDao.userAdd(user);
     }
 
     public User findByName(String name){
@@ -33,5 +33,13 @@ public class UserService {
 
     public int userDelete(String name){
         return userDao.userDelete(name);
+    }
+
+    public User findByUserid(int userid){
+        return userDao.findByUserid(userid);
+    }
+
+    public void updateUserImage(User user){
+        userDao.updateUserImage(user);
     }
 }

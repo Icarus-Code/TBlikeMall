@@ -1,13 +1,18 @@
 package zhku.zzy.tblikemall.Servlet;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import zhku.zzy.tblikemall.Entity.Shop;
 import zhku.zzy.tblikemall.Entity.User;
+import zhku.zzy.tblikemall.Service.ShopService;
 import zhku.zzy.tblikemall.Service.UserService;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 @WebServlet("/RegisterServlet")
@@ -43,11 +48,31 @@ public class RegisterServlet extends HttpServlet {
                 }
             }
             else{
+                ServletContext context = getServletContext();
+                String imagePath = context.getRealPath("/WEB-INF/用户默认头像/默认头像.png");
+                byte[] imageByte = null;
+                File file = new File(imagePath);
+                try (FileInputStream fis = new FileInputStream(file)) {
+                    imageByte = new byte[(int) file.length()];
+                    fis.read(imageByte);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 User user = new User();
                 user.setUsername(username);
                 user.setPassword(password);
                 user.setRole(role);
+                user.setUserimage(imageByte);
                 userService.userAdd(user);
+                int userid = userService.findByName(username).getUserid();
+                if(role.equals("shopkeeper")){
+                    Shop shop = new Shop();
+                    shop.setUserid(userid);
+                    shop.setShopname("待编辑");
+                    shop.setDescription("待编辑");
+                    ShopService shopService = new ShopService();
+                    shopService.shopAdd(shop);
+                }
                 try {
                     response.sendRedirect("accountOperateSuccess.jsp");
                 } catch (IOException e) {

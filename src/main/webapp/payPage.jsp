@@ -49,10 +49,9 @@
 <body>
 <div class="container">
     <h2>订单创建成功</h2>
-    <p>是否支付？</p>
     <div class="payment-options">
         <button onclick="location.href='ShowProductsServlet';">稍后再说</button>
-        <button onclick="location.href='#';">立即支付</button>
+        <button onclick="location.href='ShowOrdersServlet';">查看订单</button>
     </div>
 </div>
 </body>

@@ -10,6 +10,16 @@ public class Product {
     private int stock;
     private int shopid;
     private byte[] productimage;
+    private int completedOrderCount;
+
+    public int getCompletedOrderCount() {
+        return completedOrderCount;
+    }
+
+    public void setCompletedOrderCount(int completedOrderCount) {
+        this.completedOrderCount = completedOrderCount;
+    }
+
 
     public byte[] getProductimage() {
         return productimage;

@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Spreps
+  Date: 2025/1/3
+  Time: 上午3:11
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page import="zhku.zzy.tblikemall.Entity.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Base64" %>
@@ -92,9 +99,16 @@
             padding: 10px 20px; /* 内边距 */
             text-align: center; /* 文字居中 */
             text-decoration: none; /* 去除下划线 */
-            display: inline-block; /* 使链接表现得像块级元素 */
-            border: none; /* 去除边框 */
-            cursor: pointer; /* 鼠标悬停时显示手型 */
+            display: inline-block; /* 使链接并排显示 */
+            margin: 5px; /* 外边距，增加按钮之间的空间 */
+            border-radius: 5px; /* 圆角边框 */
+            transition: background-color 0.3s; /* 平滑背景色变化 */
+        }
+
+        .button-container {
+            display: flex; /* 使用flex布局 */
+            justify-content: space-between; /* 两端对齐，按钮之间有空间 */
+            margin-top: 10px; /* 与上方内容的间隔 */
         }
     </style>
 </head>
@@ -102,10 +116,9 @@
 
 <div class="navbar">
     <a href="ShowProductsServlet">首页</a>
-    <a href="ShowCartServlet">购物车</a>
-    <a href="ShowOrdersServlet">个人订单</a>
-    <a href="ProfileServlet">个人信息</a>
-    <a href="RankServlet">销量排行榜</a>
+    <a href="addProduct.jsp">商品上架</a>
+    <a href="ShowOrdersServlet">店铺订单</a>
+    <a href="ProfileServlet">店铺和个人信息</a>
     <span style="text-align: right">欢迎用户:<%
         if(session.getAttribute("username") == null)out.print("游客");
         else out.print(session.getAttribute("username"));
@@ -113,13 +126,8 @@
 </div>
 
 <div class="content">
-    <div class="search-box">
-        <form action="SearchServlet" method="get">
-            <input type="text" name="keyword" placeholder="搜索商品...">
-            <button type="submit">搜索</button>
-        </form>
-    </div>
     <div class="products">
+        <h1>我的商品</h1>
         <%
             List<Product> productList = (List<Product>) request.getAttribute("Products");
             for (Product product : productList) {
@@ -129,7 +137,10 @@
             <p>名称:<%= product.getProductname() %></p>
             <p>描述:<%= product.getDescription() %></p>
             <p>价格:<%= product.getPrice() %></p>
-            <a href="ShowAproductServlet?productid=<%= product.getProductid()%>" class="button-style">查看</a>
+            <div class="button-container">
+                <a href="ShowEditProductServlet?productid=<%= product.getProductid()%>" class="button-style">编辑</a>
+                <a href="DeleteProductServlet?productid=<%= product.getProductid()%>" class="button-style">删除</a>
+            </div>
         </div>
         <% } %>
     </div>

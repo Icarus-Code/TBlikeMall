@@ -73,13 +73,13 @@ public class LoginServlet extends HttpServlet {
         try {
             switch (role) {
                 case "admin":
-                    response.sendRedirect("ListAll.jsp");
+                    response.sendRedirect("allListServlet");
                     break;
                 case "customer":
                     response.sendRedirect("ShowProductsServlet");
                     break;
                 case "shopkeeper":
-                    response.sendRedirect("shopHome.jsp");
+                    response.sendRedirect("ShowProductsServlet");
                     break;
                 default:
                     response.sendRedirect("login.jsp"); // Redirect to login if role is unknown

@@ -33,7 +33,7 @@ public class Util {
         url = prop.getProperty("url");
         userName = "&user=" + prop.getProperty("userName");
         password = "&password=" + prop.getProperty("password");
-        System.out.println(driver+url+userName+password);
+        //System.out.println(driver+url+userName+password);
     }
 
     public Connection getConn(){
@@ -43,8 +43,8 @@ public class Util {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        if(conn==null) System.out.println("数据库连接出错");
-        else System.out.println("连接成功");
+        //if(conn==null) System.out.println("数据库连接出错");
+        //else System.out.println("连接成功");
         return conn;
     }
 

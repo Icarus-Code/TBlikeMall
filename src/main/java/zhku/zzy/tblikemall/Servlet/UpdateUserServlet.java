@@ -42,7 +42,7 @@ public class UpdateUserServlet extends HttpServlet {
                 }
             }
             else{
-                userService.userUpdate(username,password,userService.findByName(request.getSession().getAttribute("username").toString()).getUserid());
+                userService.userUpdate(username,password,userService.findByName(request.getParameter("selectedname")).getUserid());
                 try {
                     response.sendRedirect("accountOperateSuccess.jsp");
                 } catch (IOException e) {

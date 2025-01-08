@@ -8,6 +8,7 @@ import zhku.zzy.tblikemall.Entity.Cart;
 import zhku.zzy.tblikemall.Entity.Order;
 import zhku.zzy.tblikemall.Service.CartService;
 import zhku.zzy.tblikemall.Service.OrderService;
+import zhku.zzy.tblikemall.Service.ProductService;
 import zhku.zzy.tblikemall.Service.UserService;
 
 import java.io.IOException;
@@ -41,10 +42,11 @@ public class OrderCreateServlet extends HttpServlet {
         else{
             //处理购物车购买
             CartService cartService = new CartService();
+            ProductService productService = new ProductService();
             for(int i = 0; i < cartids.length; i++){
                 Cart cart = cartService.findListByCartId(Integer.parseInt(cartids[i]));
-                cart.setProductid(Integer.parseInt(cartids[i]));
-                cart.setQuantity(Integer.parseInt(cartids[i]));
+                cart.setProductid(cart.getProductid());
+                cart.setQuantity(cart.getQuantity());
                 carts.add(cart);
                 cartService.cartDelete(Integer.parseInt(cartids[i]));
             }

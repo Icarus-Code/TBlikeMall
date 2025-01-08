@@ -6,6 +6,7 @@
 <body>
 <%
     session.removeAttribute("username");
+    session.removeAttribute("role");
     response.sendRedirect("ShowProductsServlet");
 %>
 </body>
