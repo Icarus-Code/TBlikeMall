@@ -16,6 +16,7 @@
     <title>购物车页面</title>
 </head>
 <body>
+<a href="ShowProductsServlet">返回首页</a>
 <h2>我的购物车</h2>
 <form action="OrderCreateServlet" method="post">
     <table border="1">
@@ -26,6 +27,7 @@
             <th>价格</th>
             <th>数量</th>
             <th>小计</th>
+            <th>操作</th>
         </tr>
         <%
             List<Cart> carts = (List<Cart>) request.getAttribute("carts");
@@ -46,6 +48,7 @@
                 BigDecimal totalPrice = product.getPrice().multiply(quantityAsBigDecimal);
                 out.print(totalPrice.toPlainString());
             %></td>
+            <td><a href="DeleteCartServlet?cartid=<%= cart.getCartid()%>">删除</a></td>
         </tr>
         <%      }
         }
